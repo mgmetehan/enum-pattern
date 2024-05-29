@@ -14,3 +14,38 @@ Ayrica, her bildirim turu icin ayri bir service bulunuyor. Ornegin, e-posta bild
 
 
 #Java #DesignPatterns #CleanCode #EnumPattern
+
+### ?rnek ?stek ve Yan?tlar:
+1. **E-posta Bildirimi G?nderme**
+    - **Request:**
+    ```
+    POST http://localhost:8080/api/v1/notifications/sendNotification
+    Content-Type: application/json
+
+    {
+      "to": "mete@gmail.com",
+      "body": "test",
+      "notificationType": "email"
+    }
+    ```
+    - **Response:**
+    ```
+    Email notification sent to mete@gmail.com
+    ```
+
+2. **SMS Bildirimi G?nderme**
+    - **Request:**
+    ```
+    POST http://localhost:8080/api/v1/notifications/sendNotification
+    Content-Type: application/json
+
+    {
+      "to": "Mete",
+      "body": "test",
+      "notificationType": "sms"
+    }
+    ```
+    - **Response:**
+    ```
+    Sms notification sent to Mete
+    ```

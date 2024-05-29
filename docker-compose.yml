@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: debezium/example-postgres
+    platform: linux/amd64
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: toor
+    ports:
+      - 5432:5432
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
