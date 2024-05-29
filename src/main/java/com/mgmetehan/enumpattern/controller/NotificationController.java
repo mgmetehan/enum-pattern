@@ -15,8 +15,7 @@ public class NotificationController {
 
     @PostMapping("/sendNotification")
     public String sendNotification(@RequestBody NotificationDto notificationDto) {
-        return NotificationType.fromType(notificationDto.getNotificationType())
-                .getNotifactionService()
-                .send(notificationDto);
+        NotificationType type = NotificationType.fromType(notificationDto.getNotificationType());
+        return type.getService().send(notificationDto);
     }
 }
