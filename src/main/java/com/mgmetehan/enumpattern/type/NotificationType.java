@@ -5,20 +5,18 @@ import com.mgmetehan.enumpattern.service.NotifactionService;
 import com.mgmetehan.enumpattern.service.impl.EmailNotificationServiceImpl;
 import com.mgmetehan.enumpattern.service.impl.SmsNotificationServiceImpl;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 
 @Getter
+@RequiredArgsConstructor
 public enum NotificationType {
 
     EMAIL(EmailNotificationServiceImpl.class),
     SMS(SmsNotificationServiceImpl.class);
 
     private final Class<? extends NotifactionService> serviceClass;
-
-    NotificationType(Class<? extends NotifactionService> serviceClass) {
-        this.serviceClass = serviceClass;
-    }
 
     public NotifactionService getService() {
         return SpringContext.getBean(serviceClass);
