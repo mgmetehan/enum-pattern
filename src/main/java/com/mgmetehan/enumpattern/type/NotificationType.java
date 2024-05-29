@@ -6,6 +6,8 @@ import com.mgmetehan.enumpattern.service.impl.SmsNotificationServiceImpl;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Arrays;
+
 @RequiredArgsConstructor
 @Getter
 public enum NotificationType {
@@ -16,11 +18,9 @@ public enum NotificationType {
     private final NotifactionService notifactionService;
 
     public static NotificationType fromType(String type) {
-        for (NotificationType notificationType : NotificationType.values()) {
-            if (notificationType.getType().equals(type)) {
-                return notificationType;
-            }
-        }
-        throw new IllegalArgumentException("Unknown notification type: " + type);
+        return Arrays.stream(NotificationType.values())
+                .filter(notificationType -> notificationType.getType().equals(type))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Unknown notification type: " + type));
     }
 }
